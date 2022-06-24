@@ -1,16 +1,20 @@
 <template>
   <div id="app">
     <NavBar/>
+    <DiskContainer/>
   </div>
 </template>
 
 <script>
 import NavBar from './components/NavBar.vue';
+import DiskContainer from './components/DiskContainer.vue';
+
 
 export default {
   name: 'App',
   components: {
-    NavBar
+    NavBar,
+    DiskContainer,
   }
 }
 </script>
