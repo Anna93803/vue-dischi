@@ -11,6 +11,11 @@
                     </DiskComponent>
                 </div>
             </div>
+            <div class="select">
+                <select name="filtro" id="filtro">
+                    <option v-for="(generi, i) in filterGenre" :key="i" :value="i"> {{generi}}</option>
+                </select>
+            </div>
         </div>
     </div>
 </template>
@@ -40,6 +45,20 @@ export default {
     mounted() {
         this.diskList();
     },
+    computed: {
+        filterGenre() {
+            const genreList = [];
+
+            this.arrayList.forEach((element) => {
+                if (!genreList.includes(element.genre)) {
+                    genreList.push(element.genre)
+                }
+            })
+
+            return genreList
+        },
+    }
+
 }
 
 </script>
@@ -53,6 +72,7 @@ export default {
     .container {
         max-width: 1200px;
         margin: 0 auto;
+        display: flex;
 
         .row {
             padding: 5.125rem 0;
@@ -62,6 +82,10 @@ export default {
                 flex-wrap: wrap;
                 gap: 2.5rem;
             }
+        }
+
+        .select {
+            padding-top: .9375rem;
         }
     }
 }
