@@ -13,7 +13,7 @@
             </div>
             <div class="select">
                 <select name="filtro" id="filtro">
-                    <option v-for="(generi, i) in filterGenre" :key="i" :value="i"> {{generi}}</option>
+                    <option v-for="(generi, i) in filterGenre" :key="i" :value="i"> {{ generi }}</option>
                 </select>
             </div>
         </div>
@@ -33,6 +33,7 @@ export default {
         return {
             apiUrl: "https://flynn.boolean.careers/exercises/api/array/music",
             arrayList: [],
+            genreList: [],
         };
     },
     methods: {
@@ -47,18 +48,16 @@ export default {
     },
     computed: {
         filterGenre() {
-            const genreList = [];
 
             this.arrayList.forEach((element) => {
-                if (!genreList.includes(element.genre)) {
-                    genreList.push(element.genre)
+                if (!this.genreList.includes(element.genre)) {
+                    this.genreList.push(element.genre)
                 }
             })
-
-            return genreList
+            return this.genreList
         },
-    }
-
+        
+    },
 }
 
 </script>
@@ -87,6 +86,10 @@ export default {
         .select {
             padding-top: .9375rem;
         }
+    }
+
+    .d-none {
+        display: none;
     }
 }
 

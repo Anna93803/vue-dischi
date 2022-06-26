@@ -21,6 +21,9 @@ export default {
 .bg-navbar {
     background-color:  $ColorSecondary;
     padding: .5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
     .logo {
         width: 45px;
