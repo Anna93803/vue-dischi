@@ -6,6 +6,10 @@
                     <option value="">Seleziona il genere</option>
                     <option v-for="(generi, i) in selectedGenre" :key="i" :value="generi"> {{ generi }}</option>
                 </select>
+                <select name="filtro" id="filtro" v-model="selectValue" >
+                    <option value="">Seleziona Author</option>
+                    <option v-for="(author, i) in selectedAuthor" :key="i" :value="author"> {{ author }}</option>
+                </select>
             </div>
             <div class="row">
                 <div class="col" v-for="(disk, i) in filterGenre" :key="i">
@@ -35,6 +39,7 @@ export default {
             apiUrl: "https://flynn.boolean.careers/exercises/api/array/music",
             arrayList: [],
             genreList: [],
+            auhtorList: [],
             selectValue: '',
         };
     },
@@ -69,8 +74,18 @@ export default {
 
             return this.arrayList.filter((album) => {
                 return album.genre === this.selectValue;
+        
             });
-        }
+        },
+        selectedAuthor() {
+            this.arrayList.forEach((element) => {
+                if(!this.auhtorList.includes(element.author)) {
+                    this.auhtorList.push(element.author)
+                }
+            })
+
+            return this.auhtorList
+        },   
     },
 }
 
@@ -91,6 +106,10 @@ export default {
             background-color: $ColorSecondary;
             padding: 20px;
             margin-top: 30px;
+
+            #filtro {
+                margin-right: 36px;
+            }
         }
         .row {
             padding: 5.125rem 0;
