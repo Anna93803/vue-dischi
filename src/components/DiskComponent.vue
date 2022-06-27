@@ -18,7 +18,7 @@ export default {
         titleImg: String,
         author: String,
         year: String,
-    }
+    },
 }
 </script>
 
@@ -27,12 +27,10 @@ export default {
 
 .bg-card {
     background-color:  $ColorSecondary;
-    width: calc(100% / 5 - 40px);
+    height: 100%;
     padding: 1.5625rem;
 
-
     .card {
-        width: 150px;
         text-align: center;
 
         img {
